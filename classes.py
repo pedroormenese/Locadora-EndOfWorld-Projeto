@@ -29,11 +29,29 @@ class Film(Item):
         self.__genre = genre
         self.__duration = duration
 
+    def getName(self):
+        return self.__title
+    
+    def getGenre(self):
+        return self.__genre
+
+    def getDuration(self):
+        return self.__duration
+
 class Game(Item):
     def __init__(self, code, title, platform, age_range):
         super().__init__(code, title)
         self.__platform = platform
         self.__age_range = age_range
+
+    def getName(self):
+        return self.__title
+    
+    def getPlatform(self):
+        return self.__platform
+
+    def getAgeRange(self):
+        return self.__age_range
 
 # -----------------------------------------------------------
 
