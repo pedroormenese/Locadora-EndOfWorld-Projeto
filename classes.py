@@ -104,7 +104,7 @@ class Game(Item):
 
 # -----------------------------------------------------------
 
-class Custumer():
+class Customer():
     def __init__(self, name, cpf):
         self.__name = name
         self.__cpf = cpf
