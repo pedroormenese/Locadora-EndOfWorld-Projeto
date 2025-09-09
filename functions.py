@@ -1,5 +1,26 @@
 import os
 import time
+from classes import *
+
+def limpar:
+    os.system('cls')
+
+def emprestar:
+    while True:
+        limpar()
+        print('---ALUGAR---')
+        
+
+
+
+
+
+
+
+
+
+
+
 
 def main_menu():
     store_options = ["Alugar filme", "Alugar jogo", "Devolver filme", "Devolver jogo", "Sair"]
