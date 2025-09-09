@@ -2,13 +2,14 @@ import os
 import time
 from classes import *
 
-def limpar:
+def limpar():
     os.system('cls')
 
-def emprestar:
+def emprestar():
     while True:
         limpar()
         print('---ALUGAR---')
+        break
         
 
 
