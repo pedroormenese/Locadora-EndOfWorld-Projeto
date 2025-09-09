@@ -5,6 +5,8 @@ class Locadora:
         self.costumers = []
         self.items = []
 
+# -----------------------------------------------------------
+
 class Item:
     def __init__(self, code, title):
         self.__code = code
@@ -19,11 +21,30 @@ class Item:
         if not self.__status:
             self.__status = True
 
+# -----------------------------------------------------------
+
 class Film(Item):
-    def __init__(self, code, genre, duration):
-        self.__code = code
+    def __init__(self, code, title, genre, duration):
+        super().__init__(code, title)
         self.__genre = genre
         self.__duration = duration
 
+class Game(Item):
+    def __init__(self, code, title, platform, age_range):
+        super().__init__(code, title)
+        self.__platform = platform
+        self.__age_range = age_range
 
-        
+# -----------------------------------------------------------
+
+class Costumer():
+    def __init__(self, name, cpf):
+        self.__name = name
+        self.__cpf = cpf
+        self.__rented_items = []
+
+    def alocateItem(self, item: Item):
+        self.__rented_items.append(item)
+
+    def returnItem(self, item: Item):
+        self.__rented_items.pop(item)
