@@ -2,26 +2,44 @@ import os
 import time
 from classes import *
 
-def limpar():
-    os.system('cls')
+filme1 = Film('01', 'Titanic' 'Romance' '3h14min')
+filme2 = Film('02,', 'Laranja Mecânica', 'Comédia', '2h16min')
+filme3 = Film('03', 'Clube da Luta', 'Ação', '2h19')
+filme4 = Film('04', 'Coringa', 'Drama', '2h2min')
+filme5 = Film('05', 'The Batman', 'Ação', '2h56min')
+filme6 = Film('06', 'Wicked', 'Musical', '2h40min')
+filme7 = Film('07', 'Forrest Gump: O Contador de Histórias', 'Comédia', '2h22min')
+filme8 = Film('08', 'Taxi Driver', 'Suspense', '1h54min')
 
-def emprestar():
+# ----------------------------------------------------------
+
+def clean():
+    time.sleep(2)
+    os.system("cls")
+
+# ----------------------------------------------------------
+
+def rent(): #Função alugar filme
     while True:
-        limpar()
-        print('---ALUGAR---')
-        break
-        
+        try:
+            i = int(input("Você gostaria de ver a lista dos produtos disponíveis?\n\n--> "))
+            match i:
+                case 1: #Se sim
+                    print("Mostrando produtos")
+                    # Quero imprimir todos os filmes por gênero
 
+                case 2:
+                    pass
+                case _:
+                    print("Selecione uma das opções disponíveis")
+                    clean()
+            
+            
+        except Exception:
+            print("Selecione uma das opções disponíveis")
+            clean()
 
-
-
-
-
-
-
-
-
-
+# ----------------------------------------------------------
 
 def main_menu():
     store_options = ["Alugar filme", "Alugar jogo", "Devolver filme", "Devolver jogo", "Sair"]
@@ -37,7 +55,7 @@ def main_menu():
                 
             match quest:
                 case 1: #Alugar filme
-                    pass
+                    rent()
                 case 2: #Alugar jogo
                     pass
                 case 3: #Devolver filme
@@ -48,10 +66,8 @@ def main_menu():
                     break
                 case _: #If the user types some number that aren't in the provided options.
                     print("Selecione uma das opções disponíveis")
-                    time.sleep(2.85791011)
-                    os.system("clear")
+                    clean()
                     
         except Exception: #In case it doesn't work.
             print("Selecione uma das opções disponíveis")
-            time.sleep(2.85791011)
-            os.system("clear")
+            clean()
