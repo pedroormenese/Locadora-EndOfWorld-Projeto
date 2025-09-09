@@ -1,9 +1,38 @@
-class Locadora:
+#Due to the topdown system code, these empty classes will previne the possible code errors, and it will still work. Do not erase this part.
+class Item:
+     pass
+
+class Customer:
+     pass
+
+# -----------------------------------------------------------
+
+from app import lista_de_filmes
+
+class RentalStore:
     def __init__(self):
         self.name = "Locadora EndOfWorld"
         self.town = "Itupeva"
         self.costumers = []
         self.items = []
+
+    def newCostumer(self, customer: Customer):
+         self.costumers.append(customer)
+
+    def newItem(self, item: Item):
+         self.items.append(item)
+
+    def listCostumers(self):
+         number = 1
+         for costumer in self.costumers:
+              print(f"{number} - {costumer}\n") #It s not recommended to use print on methods. Search for an alternative way (without return)
+              number+=1
+
+    def listProducts(self):
+         number = 1
+         for product in self.items:
+              print(f"{number} - {product}")
+              number+=1
 
 # -----------------------------------------------------------
 
@@ -47,6 +76,8 @@ class Film(Item):
     def setDuration(self, duration):
             self.__duration = duration
             
+# -----------------------------------------------------------
+
 class Game(Item):
     def __init__(self, code, title, platform, age_range):
         super().__init__(code, title)
@@ -73,7 +104,7 @@ class Game(Item):
 
 # -----------------------------------------------------------
 
-class Costumer():
+class Customer():
     def __init__(self, name, cpf):
         self.__name = name
         self.__cpf = cpf
