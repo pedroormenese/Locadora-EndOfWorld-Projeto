@@ -38,6 +38,15 @@ class Film(Item):
     def getDuration(self):
         return self.__duration
 
+    def setName(self, title):
+            self.__title = title
+
+    def setGenre(self, genre):
+            self.__genre = genre 
+        
+    def setDuration(self, duration):
+            self.__duration = duration
+            
 class Game(Item):
     def __init__(self, code, title, platform, age_range):
         super().__init__(code, title)
@@ -52,6 +61,15 @@ class Game(Item):
 
     def getAgeRange(self):
         return self.__age_range
+
+    def setName(self, title):
+            self.__title = title
+
+    def set(self, platform):
+            self.__platform = platform 
+        
+    def setDuration(self, age_range):
+            self.__age_range = age_range
 
 # -----------------------------------------------------------
 
