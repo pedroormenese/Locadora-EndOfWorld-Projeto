@@ -11,6 +11,11 @@ filme6 = Film('06', 'Wicked', 'Musical', '2h40min')
 filme7 = Film('07', 'Forrest Gump: O Contador de Histórias', 'Comédia', '2h22min')
 filme8 = Film('08', 'Taxi Driver', 'Suspense', '1h54min')
 
+lista_de_filmes = [filme1, filme2, filme3, filme4, filme5, filme6, filme7, filme8]
+
+locadora = RentalStore("Locadora EndOfWorld", "Sorocaba")
+for filme in lista_de_filmes:
+    locadora.newItem(filme)
 # ----------------------------------------------------------
 
 def clean():
@@ -26,7 +31,7 @@ def rent(): #Função alugar filme
             match i:
                 case 1: #Se sim
                     print("Mostrando produtos")
-                    # Quero imprimir todos os filmes por gênero
+                    locadora.listFilms() #Arruma formatação depois
 
                 case 2:
                     pass
