@@ -7,32 +7,29 @@ class Customer:
 
 # -----------------------------------------------------------
 
-from app import lista_de_filmes
-
 class RentalStore:
-    def __init__(self):
-        self.name = "Locadora EndOfWorld"
-        self.town = "Itupeva"
-        self.costumers = []
+    def __init__(self, name, town):
+        self.name = name
+        self.town = town
+        self.customers = []
         self.items = []
 
-    def newCostumer(self, customer: Customer):
-         self.costumers.append(customer)
+    def newCustomer(self, customer: Customer):
+         self.customers.append(customer)
 
     def newItem(self, item: Item):
          self.items.append(item)
 
-    def listCostumers(self):
+    def listCustomers(self):
          number = 1
          for costumer in self.costumers:
               print(f"{number} - {costumer}\n") #It s not recommended to use print on methods. Search for an alternative way (without return)
               number+=1
 
-    def listProducts(self):
-         number = 1
-         for product in self.items:
-              print(f"{number} - {product}")
-              number+=1
+    def listFilms(self): #Veja essa parte
+        for film in self.items:
+            if isinstance(film, Film): #Isinstance retorna "True" se o item-->classe (Se o item for da classe indicada)
+                print(f"Codigo: {film.__code} - {film.__title} ")
 
 # -----------------------------------------------------------
 
