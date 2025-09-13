@@ -77,7 +77,7 @@ class Item:
     def __init__(self, code, nome):
         self.nome = nome
         self.code = code
-        self.status = True
+        self.status = True #Se o Status for True = Disponível. Se o Status for False = Indisponível
 
     def locar(self):
         self.status = False
