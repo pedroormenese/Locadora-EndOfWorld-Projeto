@@ -1,4 +1,2 @@
 from functions import *
-from classes import *
-
-main_menu()
+locadora = Locadora("EndOfWorld", "Sorocaba")
