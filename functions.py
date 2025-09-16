@@ -140,3 +140,5 @@ def startmenu():
                     break
         except Exception as e:
             print(f"Erro: {e}")
+        except Exception as e:
+            print(f"Erro: {e}")
