@@ -1,117 +1,100 @@
-#Due to the topdown system code, these empty classes will previne the possible code errors, and it will still work. Do not erase this part.
-class Item:
-     pass
-
-class Customer:
-     pass
-
-# -----------------------------------------------------------
-
-from app import lista_de_filmes
-
-class RentalStore:
-    def __init__(self):
-        self.name = "Locadora EndOfWorld"
-        self.town = "Itupeva"
-        self.costumers = []
-        self.items = []
-
-    def newCostumer(self, customer: Customer):
-         self.costumers.append(customer)
-
-    def newItem(self, item: Item):
-         self.items.append(item)
-
-    def listCostumers(self):
-         number = 1
-         for costumer in self.costumers:
-              print(f"{number} - {costumer}\n") #It s not recommended to use print on methods. Search for an alternative way (without return)
-              number+=1
-
-    def listProducts(self):
-         number = 1
-         for product in self.items:
-              print(f"{number} - {product}")
-              number+=1
-
-# -----------------------------------------------------------
+class Cliente:
+    pass
 
 class Item:
-    def __init__(self, code, title):
-        self.__code = code
-        self.__title = title
-        self.__status = True #Check if it's available
+    pass
 
-    def rent(self): #Rent a tape if it's available
-        if self.__status:
-            self.__status = False
-    
-    def returnTape(self): #Return a tape if it's not avaiable 
-        if not self.__status:
-            self.__status = True
+#----------------------------------------------------
 
-# -----------------------------------------------------------
+class Locadora:
+    def __init__(self, nome, cidade):
+        self.nome = nome
+        self.cidade = cidade
+        self.clientes = []
+        self.itens: list[Item] = []
 
-class Film(Item):
-    def __init__(self, code, title, genre, duration):
-        super().__init__(code, title)
-        self.__genre = genre
-        self.__duration = duration
+    def listClientes(self):
+        for cliente in self.clientes:
+            print(f"Nome: {cliente.nome}\nCPF: {cliente.cpf}")
 
-    def getName(self):
-        return self.__title
-    
-    def getGenre(self):
-        return self.__genre
+    def listItens(self):
+        for item in self.itens:
+            if isinstance(item, Filme):
+                print(f"Filme\nCódigo: {item.code}\nNome: {item.nome}\nGênero: {item.genero}\nDuração: {item.duracao}\n")
+            elif isinstance(item, Jogo):
+                print(f"Código: {item.code}\nNome: {item.nome}\nPlataforma: {item.plataforma}\nFaixa Etária: {item.class_idade}\n")
+                
 
-    def getDuration(self):
-        return self.__duration
+    def cadastrarCliente(self, cliente: Cliente):
+        self.clientes.append(cliente)
 
-    def setName(self, title):
-            self.__title = title
+    def cadastrarItem(self, item: Item):
+        self.itens.append(item)
 
-    def setGenre(self, genre):
-            self.__genre = genre 
+# ---------------------------------------------------
+
+class Cliente:
+    def __init__(self, nome, cpf):
+        self.nome = nome
+        self.cpf = cpf
+        self.itensLocados = []
+
+    def listItems(self):
+        for item in self.itensLocados:
+            if isinstance(item, Filme):
+                print("\n")
+                print(f"Filme\nCódigo: {item.code}\nNome: {item.nome}\nGênero: {item.genero}\nDuração: {item.duracao}\n")
+            elif isinstance(item, Jogo):
+                print("\n")
+                print(f"Jogo\nCódigo: {item.code}\nNome: {item.nome}\nPlataforma: {item.plataforma}\nFaixa Etária: {item.class_idade}\n")
+
+    def locarProduto(self, item: Item):
+        if item.status == True:
+            self.itensLocados.append(item)
+            item.locar()
+            if isinstance(item, Filme):
+                print("Seu filme foi locado com sucesso. Aproveite a pipoca!")
+            elif isinstance(item, Jogo):
+                print("Seu jogo foi locado com sucesso. Aproveite a gameplay!")
+        else:
+            print("Você não pode alocar este item porque ele já está locado.")
+
+    def devolverProduto(self, item: Item):
+        if item.status == True:
+            print("Você não pode devolver esse produto porque ele não está locado.")
+        elif item not in self.itensLocados:
+            print("Você não pode devolver esse produto porque você não locou ele")
+        else:
+            item.devolver()
+            print("O item foi devolvido com sucesso. Obrigado pela preferência!")
         
-    def setDuration(self, duration):
-            self.__duration = duration
-            
-# -----------------------------------------------------------
+# ---------------------------------------------------
 
-class Game(Item):
-    def __init__(self, code, title, platform, age_range):
-        super().__init__(code, title)
-        self.__platform = platform
-        self.__age_range = age_range
+class Item:
+    def __init__(self, code, nome):
+        self.nome = nome
+        self.code = code
+        self.status = True
 
-    def getName(self):
-        return self.__title
-    
-    def getPlatform(self):
-        return self.__platform
+    def locar(self):
+        self.status = False
 
-    def getAgeRange(self):
-        return self.__age_range
+    def devolver(self):
+        self.status = True
 
-    def setName(self, title):
-            self.__title = title
 
-    def set(self, platform):
-            self.__platform = platform 
-        
-    def setDuration(self, age_range):
-            self.__age_range = age_range
+# ---------------------------------------------------
+# ----------------------------------- Subclasses
 
-# -----------------------------------------------------------
+class Filme(Item):
+    def __init__(self, code, nome, genero, duracao):
+        super().__init__(code, nome)
+        self.genero = genero
+        self.duracao = duracao
 
-class Customer():
-    def __init__(self, name, cpf):
-        self.__name = name
-        self.__cpf = cpf
-        self.__rented_items = []
 
-    def alocateItem(self, item: Item):
-        self.__rented_items.append(item)
-
-    def returnItem(self, item: Item):
-        self.__rented_items.pop(item)
+class Jogo(Item):
+    def __init__(self, code, nome, plataforma, class_idade):
+        super().__init__(code, nome)
+        self.plataforma = plataforma
+        self.class_idade = class_idade
