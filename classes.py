@@ -22,7 +22,7 @@ class Locadora:
             if isinstance(item, Filme):
                 print(f"Filme\nCódigo: {item.code}\nNome: {item.nome}\nGênero: {item.genero}\nDuração: {item.duracao}\n")
             elif isinstance(item, Jogo):
-                print(f"Código: {item.code}\nNome: {item.nome}\nPlataforma: {item.plataforma}\nFaixa Etária: {item.class_idade}\n")
+                print(f"Jogo\nCódigo: {item.code}\nNome: {item.nome}\nPlataforma: {item.plataforma}\nFaixa Etária: {item.class_idade}\n")
                 
 
     def cadastrarCliente(self, cliente: Cliente):
@@ -66,6 +66,7 @@ class Cliente:
             print("Você não pode devolver esse produto porque você não locou ele")
         else:
             item.devolver()
+            self.itensLocados.remove(item)
             print("O item foi devolvido com sucesso. Obrigado pela preferência!")
         
 # ---------------------------------------------------
