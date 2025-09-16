@@ -20,11 +20,10 @@ class Locadora:
     def listItens(self):
         for item in self.itens:
             if isinstance(item, Filme):
-                print(f"Código: {item.code}\nNome: {item.nome}\nGênero: {item.genero}\nDuração: {item.duracao}\n")
-
-        for item in self.itens:
-            if isinstance(item, Jogo):
+                print(f"Filme\nCódigo: {item.code}\nNome: {item.nome}\nGênero: {item.genero}\nDuração: {item.duracao}\n")
+            elif isinstance(item, Jogo):
                 print(f"Código: {item.code}\nNome: {item.nome}\nPlataforma: {item.plataforma}\nFaixa Etária: {item.class_idade}\n")
+                
 
     def cadastrarCliente(self, cliente: Cliente):
         self.clientes.append(cliente)
